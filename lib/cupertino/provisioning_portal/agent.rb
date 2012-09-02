@@ -10,7 +10,7 @@ module Cupertino
         super
         self.user_agent_alias = 'Mac Safari'
 
-        pw = Security::InternetPassword.find(:server => Cupertino::HOSTNAME)
+        pw = Security::InternetPassword.find(:server => user_hostname())
         @username, @password = pw.attributes['acct'], pw.password if pw
       end
 

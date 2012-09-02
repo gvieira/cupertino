@@ -4,9 +4,16 @@ command :logout do |c|
   c.description = ''
 
   c.action do |args, options|
-    say_error "You are not authenticated" and abort unless Security::InternetPassword.find(:server => Cupertino::HOSTNAME)
+    users = Settings.fetch :users, []
+  	user = args.first || Settings[:current_user]
 
-    Security::InternetPassword.delete(:server => Cupertino::HOSTNAME)
+    say_error "You are not authenticated" and abort if not users.include? user
+
+	  Security::InternetPassword.delete(:server => user_hostname(user))
+
+    Settings.delete(:current_user) if user == Settings[:current_user]
+    Settings[:users].delete user
+    Settings.save
 
     say_ok "Account credentials removed"
   end
