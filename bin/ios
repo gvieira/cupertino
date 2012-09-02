@@ -3,9 +3,11 @@
 require 'commander/import'
 require 'terminal-table'
 require 'term/ansicolor'
+require 'yaml'
 
 require 'cupertino'
 
+YAML::ENGINE.yamler = 'syck'
 HighLine.track_eof = false # Fix for built-in Ruby
 Signal.trap("INT") {} # Suppress backtrace when exiting command
 
