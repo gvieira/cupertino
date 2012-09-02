@@ -19,7 +19,13 @@ $ gem install cupertino
 $ ios login
 ```
 
-_Credentials are saved in the Keychain. You will not be prompted for your username or password by commands while you are logged in. (Mac only)_
+_Credentials are saved in the Keychain. You will not be prompted for your username or password by commands while you are logged in. You can also ```$ ios login apple_user``` and you can have as many logged in accounts as you want. This command will also switch between saved accounts, so you don't have to worry about multiple passwords and stuff. (Mac only)_
+
+```sh
+$ ios logout
+```
+
+_Credentials are removed from Keychain. You can also ```$ ios logout apple_user``` to logout an account that is not the current._
 
 ### Devices
 
@@ -99,7 +105,10 @@ $ ios certificates:list
 _Crossed out commands are not yet implemented_
 
 - `login`
+- `login APPLE_USER`
+- `login:list`
 - `logout`
+- `logout APPLE_USER`
 
 - `devices:add`
 - `devices:list`
